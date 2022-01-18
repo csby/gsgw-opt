@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-popover trigger="hover" placement="bottom-end">
+    <el-popover trigger="click" placement="bottom-end">
       <div >
         <div class="row">
           <span>登陆时间:&nbsp;</span>

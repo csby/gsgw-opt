@@ -90,6 +90,10 @@ export default Listening
   background-color: #f8f8f8;
   padding: 6px;
 }
+.el-card /deep/ .el-table__header-wrapper tr th {
+  background-color: #f8f8f8;
+  padding: 2px 0px 1px 0px;
+}
 .el-card /deep/ .el-table--small td {
   padding: 0;
   margin: 0;

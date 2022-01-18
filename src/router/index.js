@@ -43,6 +43,14 @@ const routes = [
       {
         path: '',
         component: Dashboard
+      },
+      {
+        path: '/cloud',
+        component: () => import('../views/authorized/cloud/Index')
+      },
+      {
+        path: '/node',
+        component: () => import('../views/authorized/node/Index')
       }
     ]
   },

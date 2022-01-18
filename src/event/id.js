@@ -14,7 +14,33 @@ const ids = {
   wsRootSiteUploadFile: 111,
   // 根站点-删除文件
   // data: {"name":"test.txt"}
-  wsRootSiteDeleteFile: 112
+  wsRootSiteDeleteFile: 112,
+
+  // 节点注册
+  // data: {"id": "", "name":"", "instances": []}
+  wsNodeRegister: 131,
+  // 节点注销
+  // data: {"id": ""}
+  wsNodeRevoke: 132,
+  // 节点修改
+  // data: {"id": "", "displayName":"", "remark": ""}
+  wsNodeModify: 133,
+  // 节点实例上线
+  // data: {"node": "", "id": "", "ip": "", "version": "", "time": "2022-01-17 13:05:54"}
+  wsNodeInstanceOnline: 135,
+  // 节点实例下线
+  // data: {"node": "", "id": "", "ip": "", "version": "", "time": "2022-01-17 13:05:54"}
+  wsNodeInstanceOffline: 136,
+
+  // 节点在线状态改变
+  // data: {"online": false}
+  wsNodeOnlineStateChanged: 140,
+  // 节点转发服务状态
+  // data: {"running": false, "error": ""}
+  wsNodeFwdInputListenSvcState: 141,
+  // 节点转发项目状态
+  // data: {"id": "", "running": false, "error": ""}
+  wsNodeFwdInputListenItemState: 142
 }
 
 export default {

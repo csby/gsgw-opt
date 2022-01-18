@@ -13,6 +13,10 @@ const uri = {
   // 通知订阅
   websocketNotify: '/opt.api/websocket/notify',
 
+  // 系统角色
+  // 获取服务角色
+  sysRoleServer: '/opt.api/sys/role/server',
+
   // 后台服务
   // 获取服务信息
   svcInfo: '/opt.api/service/info',
@@ -61,7 +65,46 @@ const uri = {
   // 获取网站信息
   siteWebAppInfo: '/opt.api/site/app/info',
   // 上传网站
-  siteWebAppUpload: '/opt.api/site/app/upload'
+  siteWebAppUpload: '/opt.api/site/app/upload',
+
+  // 云端服务
+  // 获取所有节点
+  cloudNodeListAll: '/opt.api/cloud/node/list/all',
+  // 获取在线节点
+  cloudNodeListOnline: '/opt.api/cloud/node/list/online',
+  // 修改节点信息
+  cloudNodeInfoMod: '/opt.api/cloud/node/info/mod',
+  // 删除节点
+  cloudNodeInfoDel: '/opt.api/cloud/node/info/del',
+
+  // 节点服务
+  // 获取节点信息
+  nodeInfoGet: '/opt.api/node/info',
+  // 获取启用状态
+  nodeCfgEnableGet: '/opt.api/cfg/node/enable/get',
+  // 获取在线状态
+  nodeOnlineState: '/opt.api/node/online/state',
+  // 获取在线目标节点
+  nodeOnlineTargetList: '/opt.api/node/online/target/list',
+  // 端口转发
+  // 获取运行状态
+  nodeFwdInputListenState: '/opt.api/node/fwd/input/listen/state',
+  // 获取启用状态
+  nodeFwdEnableGet: '/opt.api/cfg/node/fwd/enable/get',
+  // 设置启用状态
+  nodeFwdEnableSet: '/opt.api/cfg/node/fwd/enable/set',
+  // 启动服务
+  nodeFwdInputSvcListenStart: '/opt.api/cfg/node/fwd/input/svc/listen/start',
+  // 停止服务
+  nodeFwdInputSvcListenStop: '/opt.api/cfg/node/fwd/input/svc/listen/stop',
+  // 获取转发列表
+  nodeFwdItemList: '/opt.api/cfg/node/fwd/item/list',
+  // 添加转发项目
+  nodeFwdItemAdd: '/opt.api/cfg/node/fwd/item/add',
+  // 修改转发项目
+  nodeFwdItemMod: '/opt.api/cfg/node/fwd/item/mod',
+  // 删除转发项目
+  nodeFwdItemDel: '/opt.api/cfg/node/fwd/item/del'
 }
 
 export default {

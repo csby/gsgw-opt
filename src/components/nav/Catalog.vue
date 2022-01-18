@@ -15,7 +15,15 @@
              :default-active="defaultActive">
       <el-menu-item index="/">
         <i class="el-icon-menu"></i>
-        <span slot="title">控制面板</span>
+        <span slot="title">服务面板</span>
+      </el-menu-item>
+      <el-menu-item index="/cloud" v-show="info.role.server.cloud">
+        <i class="el-icon-cloudy"></i>
+        <span slot="title">云端服务</span>
+      </el-menu-item>
+      <el-menu-item index="/node" v-show="info.role.server.node">
+        <i class="el-icon-place"></i>
+        <span slot="title">节点服务</span>
       </el-menu-item>
     </el-menu>
   </div>
@@ -40,11 +48,36 @@ import VueBase from '@/components/VueBase'
 class Catalog extends VueBase {
   menuCollapse = false
 
+  info = {
+    role: {
+      server: {
+        cloud: false,
+        node: false
+      }
+    }
+  }
+
   get heightStyle () {
     const minHeight = (this.minHeight - 25) + 'px'
     return {
       'min-height': minHeight
     }
+  }
+
+  onGetServerRole (code, err, data) {
+    if (code === 0) {
+      this.info.role.server.cloud = data.cloud
+      this.info.role.server.node = data.node
+    } else {
+    }
+  }
+
+  doGetServerRole () {
+    this.post(this.$uris.sysRoleServer, null, this.onGetServerRole)
+  }
+
+  mounted() {
+    this.doGetServerRole()
   }
 }
 
