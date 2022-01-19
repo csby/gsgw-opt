@@ -16,6 +16,13 @@ const ids = {
   // data: {"name":"test.txt"}
   wsRootSiteDeleteFile: 112,
 
+  // 节点转发开始
+  // data: {"id": "", "time":"", "sourceNode": {}, "targetNode": {}, "targetHost": ""}
+  wsNodeForwardTcpStart: 123,
+  // 节点转发结束
+  // data: "id"
+  wsNodeForwardTcpEnd: 124,
+
   // 节点注册
   // data: {"id": "", "name":"", "instances": []}
   wsNodeRegister: 131,

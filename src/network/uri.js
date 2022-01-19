@@ -76,6 +76,8 @@ const uri = {
   cloudNodeInfoMod: '/opt.api/cloud/node/info/mod',
   // 删除节点
   cloudNodeInfoDel: '/opt.api/cloud/node/info/del',
+  // 获取节点转发连接
+  cloudNodeFwdConnList: '/opt.api/cloud/node/fwd/conn/list',
 
   // 节点服务
   // 获取节点信息

@@ -19,6 +19,7 @@
               aelement-loading-text="加载中..."
               element-loading-spinner="el-icon-loading"
               size="small"
+              :max-height="minHeight"
               :data="info.items"
               :border="true"
               :stripe="true">
@@ -189,6 +190,8 @@ class All extends SocketBase {
     padding: '0px 0px 0px 0px'
   }
 
+  minHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight - 60
+
   info = {
     loading: false,
     items: [],
@@ -220,6 +223,14 @@ class All extends SocketBase {
     }
 
     return 0
+  }
+
+  onSizeChanged () {
+    const clientHeight = window.innerHeight ||
+      document.documentElement.clientHeight ||
+      document.body.clientHeight
+
+    this.minHeight = clientHeight - 60
   }
 
   showMod(row) {
@@ -377,6 +388,13 @@ class All extends SocketBase {
 
   mounted() {
     this.doGetInfo()
+
+    window.addEventListener('resize', this.onSizeChanged)
+    this.onSizeChanged()
+  }
+
+  beforeDestroy () {
+    window.removeEventListener('resize', this.onSizeChanged)
   }
 }
 
@@ -395,6 +413,7 @@ export default All
   .header div {
     display: flex;
     align-items: center;
+    height: 23px;
   }
   .header div:first-child {
     flex: 1;

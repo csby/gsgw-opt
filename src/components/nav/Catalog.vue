@@ -17,10 +17,21 @@
         <i class="el-icon-menu"></i>
         <span slot="title">服务面板</span>
       </el-menu-item>
-      <el-menu-item index="/cloud" v-show="info.role.server.cloud">
-        <i class="el-icon-cloudy"></i>
-        <span slot="title">云端服务</span>
-      </el-menu-item>
+      <el-submenu index="/cloud" v-show="info.role.server.cloud">
+        <template slot="title">
+          <i class="el-icon-cloudy"></i>
+          <span slot="title">云端服务</span>
+        </template>
+        <el-menu-item index="/cloud/node">
+          <i class="el-icon-place"></i>
+          <span slot="title">节点信息</span>
+        </el-menu-item>
+        <el-menu-item index="/cloud/fwd">
+          <i class="el-icon-sort"></i>
+          <span slot="title">转发连接</span>
+        </el-menu-item>
+      </el-submenu>
+
       <el-menu-item index="/node" v-show="info.role.server.node">
         <i class="el-icon-place"></i>
         <span slot="title">节点服务</span>
