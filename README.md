@@ -1,4 +1,5 @@
-# gwsf-opt
+# gsgw-opt
+Administration Website for Golang safe gateway
 
 ## Project setup
 ```

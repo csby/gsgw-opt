@@ -1,6 +1,6 @@
 const app = {
-  guid: '4D29EA5F748C4CFDA37434CE76A5E788',
-  title: '后台管理'
+  guid: 'FCBA731A2F83E07252046605EF435F67',
+  title: '后台管理-安全网关'
 }
 
 const api = {
