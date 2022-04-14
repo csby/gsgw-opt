@@ -10,6 +10,10 @@ const uri = {
   // 获取在线用户
   getOnlineUsers: '/opt.api/online/users',
 
+  // 数据库
+  // 获取SQL Server实例列表
+  dbMsSqlInstanceList: '/opt.api/db/mssql/instance/list',
+
   // 通知订阅
   websocketNotify: '/opt.api/websocket/notify',
 

@@ -52,6 +52,10 @@
       <div class="item">
         <span>条目列表:</span>
         <el-badge class="badge" type="info" :value="itemCount" v-if="itemCount > 0"/>
+        <div style="flex: 1;"></div>
+        <el-button size="small" type="primary" :plain="true" style="margin-bottom: 3px;" @click="showDb">
+          <span>查看SQL Server实例信息</span>
+        </el-button>
       </div>
       <el-table v-loading="info.loading"
                 aelement-loading-text="加载中..."
@@ -158,6 +162,47 @@
                 @success="doGetInfo" />
 
       <port-viewer v-model="port.visible" />
+
+      <drawer v-model="db.visible"
+              icon="el-icon-view"
+              title="查看SQL Server实例信息"
+              :modal="true">
+        <div style="padding: 5px 10px;">
+          <div style="display: flex; align-items: center;">
+            <el-input v-model="db.args.host" placeholder="主机地址" size="small" :clearable="true"/>
+            <el-input v-model="db.args.port" placeholder="主机端口" size="small" :clearable="true" style="width: 200px;" >
+              <el-button slot="append" icon="el-icon-search" :loading="db.loading" @click="doGetDb"/>
+            </el-input>
+          </div>
+
+          <div class="table">
+            <el-table :data="db.items"
+                      v-loading="db.loading"
+                      element-loading-text="加载中..."
+                      element-loading-spinner="el-icon-loading"
+                      size="small"
+                      :border="true"
+                      :stripe="true">
+              <el-table-column type="index" align="right" width="60px">
+                <template #header>
+                  <el-badge type="info" :value="db.items.length" />
+                </template>
+              </el-table-column>
+              <el-table-column label="实例名称" prop="name" />
+              <el-table-column label="监听端口号" prop="port" width="150px" />
+              <el-table-column label="实例版本号" prop="version" width="150px" />
+
+              <template #empty>
+                <el-alert v-if="isNotNullOrEmpty(db.error.summary)"
+                          type="error"
+                          :title="db.error.summary"
+                          :description="db.error.detail"
+                          :closable="false" />
+              </template>
+            </el-table>
+          </div>
+        </div>
+      </drawer>
     </div>
   </el-card>
 </template>
@@ -167,11 +212,13 @@ import Component from 'vue-class-component'
 import SocketBase from '@/components/SocketBase'
 import FwdEdit from '@/components/node/fwd/Edit'
 import PortViewer from '@/components/monitor/network/ListeningDrawer'
+import Drawer from '@/components/Drawer'
 
 @Component({
   components: {
     fwdEdit: FwdEdit,
-    portViewer: PortViewer
+    portViewer: PortViewer,
+    drawer: Drawer
   }
 })
 class Info extends SocketBase {
@@ -224,7 +271,21 @@ class Info extends SocketBase {
     visible: false
   }
 
-  get itemCount() {
+  db = {
+    visible: false,
+    loading: false,
+    args: {
+      host: '127.0.0.1',
+      port: '1434'
+    },
+    items: [],
+    error: {
+      summary: '',
+      detail: ''
+    }
+  }
+
+  get itemCount () {
     if (this.info.items) {
       return this.info.items.length
     }
@@ -232,7 +293,45 @@ class Info extends SocketBase {
     return 0
   }
 
-  showMod(row) {
+  showDb () {
+    this.db.items = []
+    if (this.isNullOrEmpty(this.db.args.host)) {
+      this.db.args.host = '127.0.0.1'
+    }
+    if (this.isNullOrEmpty(this.db.args.port)) {
+      this.db.args.port = '1434'
+    }
+    this.db.error.summary = ''
+    this.db.error.detail = ''
+    this.db.loading = false
+    this.db.visible = true
+  }
+
+  onGetDb (code, err, data) {
+    this.db.loading = false
+
+    if (code === 0) {
+      this.db.items = data
+    } else {
+      this.db.items = []
+      this.db.error.summary = err.summary
+      this.db.error.detail = err.detail
+    }
+  }
+
+  doGetDb () {
+    if (this.db.loading) {
+      return
+    }
+
+    this.db.error.summary = ''
+    this.db.error.detail = ''
+    this.db.loading = true
+
+    this.post(this.$uris.dbMsSqlInstanceList, this.db.args, this.onGetDb)
+  }
+
+  showMod (row) {
     this.mod.info = row
     this.mod.visible = true
   }
@@ -255,7 +354,6 @@ class Info extends SocketBase {
   }
 
   onGetEnableState (code, err, data) {
-
     if (code === 0) {
       this.info.enable = data
     } else {
@@ -373,13 +471,13 @@ class Info extends SocketBase {
     this.post(this.$uris.nodeFwdItemList, null, this.onGetInfo)
   }
 
-  doRefresh() {
+  doRefresh () {
     this.doGetEnableState()
     this.doGetRunningState()
     this.doGetInfo()
   }
 
-  onSocketMessage(id, data) {
+  onSocketMessage (id, data) {
     if (id === this.$evt.id.wsNodeFwdInputListenSvcState) {
       this.info.running = data.running
     } else if (id === this.$evt.id.wsNodeFwdInputListenItemState) {
@@ -396,7 +494,7 @@ class Info extends SocketBase {
     }
   }
 
-  mounted() {
+  mounted () {
     this.doGetEnableState()
     this.doGetRunningState()
     this.doGetInfo()
@@ -427,7 +525,6 @@ export default Info
     width: 30px;
     text-align: center;
   }
-
 
   .el-card /deep/ .el-table__header-wrapper tr th {
     background-color: #f8f8f8;
@@ -461,5 +558,23 @@ export default Info
   .item div .el-button {
     padding-top: 5px;
     padding-bottom: 5px;
+  }
+
+  .table {
+    margin-top: 5px;
+  }
+  .table /deep/ .el-table--small td {
+    padding: 0;
+    margin: 0;
+  }
+  .table /deep/ .el-table--small tr th {
+    padding: 0;
+  }
+  .table /deep/ .el-table__empty-block {
+    min-height: 0;
+    width: 96%;
+  }
+  .table /deep/ .el-table__empty-text {
+    width: 100%;
   }
 </style>
