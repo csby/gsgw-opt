@@ -91,7 +91,7 @@
         <el-table-column
           label="监听地址"
           prop="listenAddress"
-          width="95px"
+          width="105px"
           align="right" />
         <el-table-column
           label="监听端口"
@@ -128,7 +128,7 @@
           </template>
         </el-table-column>
         <el-table-column width="105px">
-          <template slot="header" slot-scope="scope">
+          <template slot="header">
             <el-button type="text" size="small" @click="add.visible = true">
               <span>添加新端口</span>
             </el-button>
@@ -180,6 +180,7 @@
                       v-loading="db.loading"
                       element-loading-text="加载中..."
                       element-loading-spinner="el-icon-loading"
+                      empty-text=" "
                       size="small"
                       :border="true"
                       :stripe="true">
@@ -576,5 +577,6 @@ export default Info
   }
   .table /deep/ .el-table__empty-text {
     width: 100%;
+    text-align: left;
   }
 </style>

@@ -17,7 +17,9 @@ const keys = {
   // 自动登录: bool
   autoLogin: key('autoLogin', true),
   // 记住账号: bool
-  rememberPassword: key('rememberPassword', true)
+  rememberPassword: key('rememberPassword', true),
+  // 客户区高度: number
+  bodyHeight: key('bodyHeight', true)
 }
 
 function key (v, reserved = false) {

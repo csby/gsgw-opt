@@ -6,7 +6,7 @@
 
 <script>
 import Component from 'vue-class-component'
-import VueBase from '@/components/VueBase'
+import RoutingBase from '@/components/RoutingBase'
 import FwdConn from '@/components/cloud/fwd/Connection'
 
 @Component({
@@ -14,7 +14,7 @@ import FwdConn from '@/components/cloud/fwd/Connection'
     fwdConn: FwdConn
   }
 })
-class Index extends VueBase {
+class Index extends RoutingBase {
 }
 
 export default Index

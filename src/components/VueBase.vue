@@ -2,8 +2,36 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
 
-@Component
+@Component({
+  props: {
+    elementHeight: {
+      type: Number,
+      default: 0
+    }
+  },
+  watch: {
+    elementHeight: {
+      handler: 'onElementHeightChanged'
+    }
+  }
+})
 class VueBase extends Vue {
+  getBodyHeight () {
+    const height = this.$db.get(this.$db.keys.bodyHeight)
+    if (height) {
+      return height
+    }
+
+    return (window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight) - 31
+  }
+
+  onElementHeightChanged (v) {
+  }
+
+  fireRoutePathChanged () {
+    this.$evt.fire(this.$evt.local.routing, this.$route.path)
+  }
+
   isNullOrEmpty (val) {
     if (val === undefined || val === null || val === '' || val === '\u003cnil\u003e') {
       return true

@@ -9,7 +9,9 @@ const local = {
   // 登录系统: ()
   login: lkey('login'),
   // 退出登录: ()
-  logout: lkey('logout')
+  logout: lkey('logout'),
+  // 路由: (path)
+  routing: lkey('routing')
 }
 
 const websocket = {

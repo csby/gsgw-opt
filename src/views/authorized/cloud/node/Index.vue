@@ -6,7 +6,7 @@
 
 <script>
 import Component from 'vue-class-component'
-import VueBase from '@/components/VueBase'
+import RoutingBase from '@/components/RoutingBase'
 import AllNode from '@/components/cloud/node/All'
 import OnlineNode from '@/components/cloud/node/Online'
 
@@ -16,7 +16,7 @@ import OnlineNode from '@/components/cloud/node/Online'
     onlineNode: OnlineNode
   }
 })
-class Index extends VueBase {
+class Index extends RoutingBase {
 }
 
 export default Index

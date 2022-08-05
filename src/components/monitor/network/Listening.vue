@@ -47,6 +47,19 @@
           width="65px"
           align="left">
         </el-table-column>
+        <el-table-column
+          label="进程ID"
+          width="70px"
+          align="left">
+          <template slot-scope="scope">
+            <processInfo v-if="scope.row.pid > 0"
+                         :pid="scope.row.pid"
+                         :port="scope.row.port"
+                         :protocol="scope.row.protocol"
+                         :address="scope.row.address"/>
+            <span v-else></span>
+          </template>
+        </el-table-column>
       </template>
     </tableList>
   </el-card>
@@ -56,10 +69,12 @@
 import Component from 'vue-class-component'
 import VueBase from '@/components/VueBase'
 import TableList from '@/components/TableList'
+import ProcessInfo from '@/components/monitor/network/PortProcess'
 
 @Component({
   components: {
-    tableList: TableList
+    tableList: TableList,
+    processInfo: ProcessInfo
   }
 })
 class Listening extends VueBase {

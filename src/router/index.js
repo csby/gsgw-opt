@@ -55,6 +55,54 @@ const routes = [
       {
         path: '/node',
         component: () => import('../views/authorized/node/Index')
+      },
+      {
+        path: '/user/local',
+        component: () => import('../views/authorized/user/local/Index')
+      },
+      {
+        path: '/user/online',
+        component: () => import('../views/authorized/user/online/Index')
+      },
+      {
+        path: '/user/ldap',
+        component: () => import('../views/authorized/user/ldap/Index')
+      },
+      {
+        path: '/monitor/disk/partition',
+        component: () => import('../views/authorized/monitor/disk/Index')
+      },
+      {
+        path: '/monitor/network/interface',
+        component: () => import('../views/authorized/monitor/network/Index')
+      },
+      {
+        path: '/monitor/cpu/usage',
+        component: () => import('../views/authorized/monitor/cpu/Index')
+      },
+      {
+        path: '/monitor/mem/usage',
+        component: () => import('../views/authorized/monitor/mem/Index')
+      },
+      {
+        path: '/port/fwd/proxy',
+        component: () => import('../views/authorized/proxy/Index')
+      },
+      {
+        path: '/svc/custom',
+        component: () => import('../views/authorized/service/custom/Index')
+      },
+      {
+        path: '/svc/tomcat',
+        component: () => import('../views/authorized/service/tomcat/Index')
+      },
+      {
+        path: '/svc/other',
+        component: () => import('../views/authorized/service/other/Index')
+      },
+      {
+        path: '/svc/nginx',
+        component: () => import('../views/authorized/service/nginx/Index')
       }
     ]
   },

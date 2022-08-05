@@ -27,4 +27,19 @@
   .el-dialog .el-dialog__body {
     padding: 5px 20px 3px 10px;
   }
+
+  .sent {
+  }
+  .sent .stroke {
+    stroke: #f0c78a;
+    stroke-width: 2;
+    stroke-dasharray: 3,3;
+  }
+
+  .recv {
+  }
+  .recv .stroke {
+    stroke: #cf9236;
+    stroke-width: 2;
+  }
 </style>

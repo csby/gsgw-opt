@@ -30,7 +30,7 @@
 
 <script>
 import Component from 'vue-class-component'
-import VueBase from '@/components/VueBase'
+import RoutingBase from '@/components/RoutingBase'
 import SvcInfo from '@/components/svc/opt/Info'
 import UpdInfo from '@/components/svc/upd/Info'
 import MonitorHost from '@/components/monitor/host/Host'
@@ -50,7 +50,7 @@ import SiteApps from '@/components/site/app/Apps'
     siteApps: SiteApps
   }
 })
-class Dashboard extends VueBase {
+class Dashboard extends RoutingBase {
 
 }
 

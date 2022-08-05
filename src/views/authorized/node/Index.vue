@@ -7,7 +7,7 @@
 
 <script>
 import Component from 'vue-class-component'
-import VueBase from '@/components/VueBase'
+import RoutingBase from '@/components/RoutingBase'
 import NodeInfo from '@/components/node/Info'
 import FwdInfo from '@/components/node/fwd/Info'
 
@@ -17,7 +17,7 @@ import FwdInfo from '@/components/node/fwd/Info'
     fwdInfo: FwdInfo
   }
 })
-class Index extends VueBase {
+class Index extends RoutingBase {
 }
 
 export default Index
