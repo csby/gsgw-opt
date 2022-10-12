@@ -174,6 +174,7 @@ class Throughput extends SocketBase {
 
   mounted () {
     this.doGetList()
+    this.sendSocketMessage(this.$evt.id.wsNetworkThroughput, true)
     if (this.ips) {
       const c = this.ips.length
       for (let i = 0; i < c; i++) {
@@ -183,6 +184,10 @@ class Throughput extends SocketBase {
         }
       }
     }
+  }
+
+  beforeDestroy () {
+    this.sendSocketMessage(this.$evt.id.wsNetworkThroughput, false)
   }
 }
 

@@ -235,7 +235,7 @@ export default Log
     padding: 0px 8px;
     background-color: #f8f8f8;
   }
-  .header /deep/ .el-button {
+  .header :deep(.el-button) {
     padding: 0px 2px;
     margin-top: 0px;
     margin-bottom: 0px;

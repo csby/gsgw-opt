@@ -259,11 +259,11 @@ export default Info
 <style scoped>
 .root {
 }
-.root /deep/ .el-table--small td {
+.root :deep(.el-table--small td) {
   padding: 0;
   margin: 0;
 }
-.root /deep/ .el-table--small tr th {
+.root :deep(.el-table--small tr th) {
   padding: 2px 0;
   background-color: #f8f8f8;
 }

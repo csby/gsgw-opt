@@ -140,7 +140,7 @@ export default Info
   .title div:first-child {
     flex: 1;
   }
-  .title /deep/ .el-checkbox {
+  .title :deep(.el-checkbox) {
    padding: 0;
   }
   .title div:first-child i {

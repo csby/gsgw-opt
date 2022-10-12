@@ -102,7 +102,7 @@ class Info extends VueBase {
     }
   }
 
-  showEdit() {
+  showEdit () {
     this.info.set.args.enable = this.info.get.info.enable
     this.info.set.args.host = this.info.get.info.host
     this.info.set.args.port = this.info.get.info.port
@@ -115,7 +115,7 @@ class Info extends VueBase {
     this.info.set.visible = true
   }
 
-  onEditInput() {
+  onEditInput () {
     this.info.set.error.code = 0
     this.info.set.disable = false
 
@@ -199,7 +199,7 @@ class Info extends VueBase {
     this.post(uri, null, this.onGetInfo)
   }
 
-  mounted() {
+  mounted () {
     this.doGetInfo()
   }
 }
@@ -208,9 +208,9 @@ export default Info
 </script>
 
 <style scoped>
-.el-card /deep/ .el-card__header {
+.el-card :deep(.el-card__header) {
   background-color: #f8f8f8;
-  padding: 6px;
+  padding: 2px 6px;
 }
 .header {
   display: flex;
@@ -231,16 +231,16 @@ export default Info
 .input-form {
 
 }
-.input-form /deep/ .el-input__inner {
+.input-form :deep(.el-input__inner) {
   text-align: left;
 }
-.input-form /deep/ .el-form-item--mini.el-form-item, .el-form-item--small.el-form-item {
+.input-form :deep(.el-form-item--mini.el-form-item, .el-form-item--small.el-form-item) {
   margin-bottom: 10px;
 }
 
 .input-readonly {
 }
-.input-readonly /deep/ .el-input__inner {
+.input-readonly :deep(.el-input__inner) {
   padding: 0;
   border-width: 0;
   border-radius: 0;

@@ -181,6 +181,8 @@ const uri = {
   nodeFwdItemDel: '/opt.api/cfg/node/fwd/item/del',
 
   // 系统服务-自定义
+  // 获取服务配置信息
+  svcCustomCfgInfoGet: '/opt.api/svc/custom/cfg/info/get',
   // 获取服务外壳程序信息
   svcCustomShellInfo: '/opt.api/svc/custom/shell/info',
   // 更新服务外壳程序

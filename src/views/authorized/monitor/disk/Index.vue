@@ -4,7 +4,7 @@
                :argument="argument"
                :tableRowClass="tableRowClassName">
     <template slot="button" slot-scope="button">
-      <span style="font-weight: lighter; font-size: small;">显示全部</span>
+      <span style="font-weight: lighter;">显示全部</span>
       <el-checkbox v-model="argument.all" @change="button.action()"></el-checkbox>
     </template>
     <el-table-column

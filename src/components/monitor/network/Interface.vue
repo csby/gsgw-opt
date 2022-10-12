@@ -6,7 +6,7 @@
         <span>网卡信息</span>
         <el-badge class="badge" type="primary" :value="nics.length" v-if="nics.length > 1"/>
       </div>
-      <div class="last">
+      <div class="select">
         <el-select v-model="nic" value-key="name" placeholder="请选择网卡" class="selector" size="mini">
           <el-option v-for="(item, index) in nics"
                      :key="index"
@@ -14,6 +14,14 @@
                      :label="item.name">
           </el-option>
         </el-select>
+      </div>
+      <div class="last">
+        <el-tooltip placement="top">
+          <div slot="content">
+            <span>刷新</span>
+          </div>
+          <el-button style="padding: 3px 5px;" type="text" icon="el-icon-refresh" @click="getInterfaces"/>
+        </el-tooltip>
       </div>
     </div>
     <div v-loading="loading" element-loading-text="加载中...">
@@ -104,43 +112,46 @@ export default Interface
 </script>
 
 <style scoped>
-.el-card /deep/ .el-card__header {
-  background-color: #f8f8f8;
-  padding: 4px 6px;
-}
-.header {
-  display: flex;
-  align-items: center;
-}
-.header .first {
-  flex: 1;
-}
-.header .first i {
-  width: 30px;
-  text-align: center;
-}
-.header .last {
-  display: flex;
-  align-items: center;
-}
-.header .last .el-select {
-  width: 120px;
-  margin: 0px;
-  padding: 0px;
-}
+  .el-card :deep(.el-card__header) {
+    background-color: #f8f8f8;
+    padding: 4px 6px;
+  }
+  .header {
+    display: flex;
+    align-items: center;
+  }
+  .header .first {
+  }
+  .header .first i {
+    width: 30px;
+    text-align: center;
+  }
+  .header .last {
+    display: flex;
+    align-items: center;
+  }
+  .header .select {
+    flex: 1;
+    padding: 0px 5px;
+  }
+  .header .select .el-select {
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+  }
 
-.item {
-  display: flex;
-  align-items: flex-start;
-  font-size: 13px;
-  overflow: hidden;
-}
-.item:not(:first-child) {
-  margin-top: 5px;
-}
+  .item {
+    display: flex;
+    align-items: flex-start;
+    font-size: 13px;
+    overflow: hidden;
+  }
+  .item:not(:first-child) {
+    margin-top: 5px;
+  }
 
-.text {
-  font-weight: bold;
-  margin-left: 3px;
-}
+  .text {
+    font-weight: bold;
+    margin-left: 3px;
+  }
 </style>

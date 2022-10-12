@@ -555,17 +555,20 @@ export default UserList
 </script>
 
 <style scoped>
-.table /deep/ .el-table--small td {
-  padding: 0;
-  margin: 0;
-}
-.table /deep/ .el-table--small tr th {
-  padding: 2px 0;
-  background-color: #f8f8f8;
-}
-.table /deep/ .el-table__empty-text {
-  width: 100%;
-  text-align: left;
-  line-height: normal;
-}
+  .table :deep(.el-table--small td) {
+    padding: 0;
+    margin: 0;
+  }
+  .table :deep(.el-table--small tr th) {
+    padding: 0;
+    background-color: #f8f8f8;
+  }
+  .table :deep(.el-table__empty-text) {
+    width: 100%;
+    text-align: left;
+    line-height: normal;
+  }
+  .table :deep(.el-button) {
+    padding: 0;
+  }
 </style>

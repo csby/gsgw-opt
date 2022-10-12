@@ -163,7 +163,7 @@ class Catalog extends VueBase {
     this.post(this.$uris.sysRoleServer, null, this.onGetServerRole)
   }
 
-  mounted () {
+  mounted() {
     this.activeIndex = this.defaultActive
     this.$evt.on(this.$evt.local.routing, this.onRoutingPathChanged)
     this.doGetServerRole()

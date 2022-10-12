@@ -402,7 +402,7 @@ export default All
 </script>
 
 <style scoped>
-  .el-card /deep/ .el-card__header {
+  .el-card :deep(.el-card__header) {
     background-color: #f8f8f8;
     padding: 1px 3px;
   }
@@ -422,23 +422,23 @@ export default All
     width: 30px;
     text-align: center;
   }
-  .header /deep/ .el-button {
+  .header :deep(.el-button) {
     padding: 2px 5px;
   }
 
-  .el-card /deep/ .el-table__header-wrapper tr th {
+  .el-card :deep(.el-table__header-wrapper tr th){
     background-color: #f8f8f8;
     padding: 2px 0px 1px 0px;
   }
-  .el-card /deep/ .el-table--small td {
+  .el-card :deep(.el-table--small td) {
     padding: 1px 0px 0px 0px;
     margin: 0;
   }
 
-  .el-table /deep/ .el-button {
+  .el-table :deep(.el-button) {
     padding: 0;
   }
-  .el-table /deep/ .el-popconfirm {
+  .el-table :deep(.el-popconfirm) {
     padding: 0;
   }
 
@@ -470,11 +470,11 @@ export default All
     width: 300px;
     margin-left: 11px;
   }
-  .instance .el-card /deep/ .el-card__header {
+  .instance .el-card :deep(.el-card__header) {
     background-color: #67C23A;
     padding: 1px 3px;
   }
-  .instance .el-card /deep/ .el-card__body {
+  .instance .el-card :deep(.el-card__body) {
     background-color: #E1F3D8;
   }
   .instance .el-card .header {

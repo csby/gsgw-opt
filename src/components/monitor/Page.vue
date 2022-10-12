@@ -121,8 +121,8 @@ class Page extends VueBase {
 
   onSizeChanged () {
     const clientHeight = window.innerHeight ||
-        document.documentElement.clientHeight ||
-        document.body.clientHeight
+      document.documentElement.clientHeight ||
+      document.body.clientHeight
 
     const paddingHeight = 1
     this.heights.client = clientHeight - paddingHeight
@@ -183,48 +183,48 @@ export default Page
 </script>
 
 <style scoped>
-.header {
-  display: flex;
-  align-items: center;
-  height: 25px;
-  padding: 0px 8px;
-  background-color: #f8f8f8;
-}
-.header /deep/ .el-button {
-  padding: 0px 2px;
-  margin-top: 0px;
-  margin-bottom: 0px;
-}
-.header :not(:first-child) {
-  margin-left: 3px;
-}
-.header i:first-child {
-  margin-top: 2px;
-}
-.header div:last-child {
-  flex: 1;
-  text-align: right;
-}
-.header div:last-child :not(:last-child){
-  margin-right: 5px;
-}
-.badge {
-  padding: 0;
-  margin-top: 3px;
-}
+  .header {
+    display: flex;
+    align-items: center;
+    height: 25px;
+    padding: 0px 8px;
+    background-color: #f8f8f8;
+  }
+  .header :deep(.el-button) {
+    padding: 0px 2px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+  .header :not(:first-child) {
+    margin-left: 3px;
+  }
+  .header i:first-child {
+    margin-top: 2px;
+  }
+  .header div:last-child {
+    flex: 1;
+    text-align: right;
+  }
+  .header div:last-child :not(:last-child){
+    margin-right: 5px;
+  }
+  .badge {
+    padding: 0;
+    margin-top: 3px;
+  }
 
-.table {
-}
-.table /deep/ .el-table th.el-table__cell {
-  padding: 2px 0px;
-  margin: 0;
-}
-.table /deep/ .el-table--small td {
-  padding: 0;
-  margin: 0;
-}
-.table /deep/ .el-button {
-  padding: 1px 8px 0px 0px;
-  margin: 0;
-}
+  .table {
+  }
+  .table :deep(.el-table th.el-table__cell) {
+    padding: 2px 0px;
+    margin: 0;
+  }
+  .table :deep(.el-table--small td) {
+    padding: 0;
+    margin: 0;
+  }
+  .table :deep(.el-button) {
+    padding: 1px 8px 0px 0px;
+    margin: 0;
+  }
 </style>

@@ -132,6 +132,11 @@ class Index extends SocketBase {
   mounted () {
     this.$nextTick(this.fireRoutePathChanged)
     this.doGetCpuUsageList()
+    this.sendSocketMessage(this.$evt.id.wsCpuUsage, true)
+  }
+
+  beforeDestroy () {
+    this.sendSocketMessage(this.$evt.id.wsCpuUsage, false)
   }
 }
 

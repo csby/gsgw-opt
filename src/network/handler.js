@@ -5,7 +5,7 @@ function Handler (fun) {
       if (response.data.code === 0) {
         handler(0, '', response.data.data)
       } else {
-        handler(response.data.code, response.data.error, response.data.data)
+        handler(response.data.code, response.data.error, null)
       }
     }
   }

@@ -53,7 +53,7 @@ function post (uri, argument, handler, interceptor) {
 //  }
 function upload (uri, argument, handler, interceptor, uploadProgress) {
   const config = {
-    timeout: 300000,
+    timeout: 1800000,
     baseURL: baseUrl,
     onUploadProgress: uploadProgress,
     headers: {

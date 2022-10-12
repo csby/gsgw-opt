@@ -180,7 +180,6 @@ class LoginBase extends VueBase {
       encryption: pwdType
     }
 
-    this.errCode = 0
     this.errSummary = ''
     this.errDetail = ''
     this.logining = true

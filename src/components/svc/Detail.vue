@@ -292,7 +292,7 @@ export default Detail
 <style scoped>
   .drawer {
   }
-  .drawer /deep/ .el-drawer__header{
+  .drawer :deep(.el-drawer__header){
     background-color: #0078D7;
     color: white;
     height: 26px;
@@ -300,11 +300,11 @@ export default Detail
     margin-bottom: 0px;
     margin-top: 0px;
   }
-  .drawer /deep/ .el-drawer__body{
+  .drawer :deep(.el-drawer__body){
     margin: 0;
     padding: 0;
   }
-  .drawer /deep/ .el-table--small td {
+  .drawer :deep(.el-table--small td) {
     padding: 0;
     margin: 0;
   }
@@ -313,7 +313,7 @@ export default Detail
     display: flex;
     align-items: center;
   }
-  .drawer-header /deep/ .el-button {
+  .drawer-header :deep(.el-button) {
     padding: 0px 3px;
     font-size: medium;
     color: #f2f2f2;

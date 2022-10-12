@@ -258,7 +258,7 @@ export default Edit
   .el-input-number {
     width: 111px;
   }
-  .el-input-number /deep/ .el-input__inner {
+  .el-input-number :deep(.el-input__inner) {
     text-align: left;
   }
 

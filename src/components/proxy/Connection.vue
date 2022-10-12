@@ -187,11 +187,11 @@ export default Connection
 </script>
 
 <style scoped>
-  .el-card /deep/ .el-card__header {
+  .el-card :deep(.el-card__header) {
     background-color: #f8f8f8;
     padding: 3px;
   }
-  .el-card /deep/ .el-table--small td {
+  .el-card :deep(.el-table--small td) {
     padding: 1px 0px;
     margin: 0;
   }

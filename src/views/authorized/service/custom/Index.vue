@@ -222,9 +222,16 @@
         <drawer v-model="shell.visible"
                 :element-height="elementHeight"
                 :modal="true"
-                size="420px"
-                icon="el-icon-help"
-                title="外壳程序">
+                size="420px">
+          <template slot="title">
+            <i class="el-icon-help"></i>
+            <span>外壳程序</span>
+            <el-tooltip :content="cfg.info.downloadTitle" placement="top" v-show="cfg.info.downloadUrl.length > 0">
+              <a :href="cfg.info.downloadUrl" target="_blank" style="margin: 4px 0px 0px 8px; color: #C6E2FF">
+                <i class="el-icon-download" />
+              </a>
+            </el-tooltip>
+          </template>
           <template slot="button">
             <el-button type="text" icon="el-icon-upload" @click="shell.update.visible = true"/>
             <el-button type="text" icon="el-icon-refresh" :loading="shell.loading" @click="doGetShellInfo"/>
@@ -279,6 +286,16 @@ import Drawer from '@/components/Drawer'
   }
 })
 class Index extends SocketBase {
+  cfg = {
+    info: {
+      app: '',
+      log: '',
+      logRetainDays: 0,
+      downloadTitle: '',
+      downloadUrl: ''
+    }
+  }
+
   info = {
     port: false,
     loading: false,
@@ -520,6 +537,21 @@ class Index extends SocketBase {
     this.post(this.$uris.svcCustomList, null, this.onGetList)
   }
 
+  onGetCfg (code, err, data) {
+    if (code === 0) {
+      this.cfg.info.app = data.app
+      this.cfg.info.log = data.log
+      this.cfg.info.logRetainDays = data.logRetainDays
+      this.cfg.info.downloadTitle = data.downloadTitle
+      this.cfg.info.downloadUrl = data.downloadUrl
+    } else {
+    }
+  }
+
+  doGetCfg () {
+    this.post(this.$uris.svcCustomCfgInfoGet, null, this.onGetCfg)
+  }
+
   onSocketMessage (id, data) {
     if (id === this.$evt.id.wsSvcStatusChanged) {
       if (data && this.info.items) {
@@ -574,6 +606,7 @@ class Index extends SocketBase {
   mounted () {
     this.$nextTick(this.fireRoutePathChanged)
     this.doGetList()
+    this.doGetCfg()
   }
 }
 
@@ -583,15 +616,15 @@ export default Index
 <style scoped>
   .table {
   }
-  .table /deep/ .el-table th.el-table__cell {
+  .table :deep(.el-table th.el-table__cell) {
     padding: 2px 0px;
     margin: 0;
   }
-  .table /deep/ .el-table--small td {
+  .table :deep(.el-table--small td) {
     padding: 0;
     margin: 0;
   }
-  .table /deep/ .el-button {
+  .table :deep(.el-button) {
     padding: 1px 8px 0px 0px;
     margin: 0;
   }
@@ -610,14 +643,14 @@ export default Index
 
   .drawer {
   }
-  .drawer /deep/ .el-drawer__header{
+  .drawer :deep(.el-drawer__header){
     background-color: #0078D7;
     color: white;
     padding: 2px 10px;
     margin-bottom: 0px;
     margin-top: 0px;
   }
-  .drawer /deep/ .el-drawer__body{
+  .drawer :deep(.el-drawer__body){
     margin: 0;
     padding: 0;
     min-height: calc(100% - 30px);
@@ -629,7 +662,7 @@ export default Index
     display: flex;
     align-items: center;
   }
-  .drawer-header /deep/ .el-button {
+  .drawer-header :deep(.el-button) {
     padding: 0px 3px;
     font-size: medium;
     color: #f2f2f2;

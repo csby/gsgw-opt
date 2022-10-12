@@ -8,7 +8,7 @@
         <Navigation :element-height="mainHeight"/>
       </el-aside>
       <el-main :style="mainStyle">
-        <router-view :element-height="mainHeight"/>
+        <router-view :element-height="mainHeight" />
       </el-main>
     </el-container>
   </el-container>

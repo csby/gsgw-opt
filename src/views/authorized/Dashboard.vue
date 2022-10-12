@@ -21,9 +21,6 @@
       <div class="not-first">
         <monitorNetworkInterfaces />
       </div>
-      <div class="not-first">
-        <monitorNetworkListening />
-      </div>
     </div>
   </div>
 </template>
@@ -35,7 +32,6 @@ import SvcInfo from '@/components/svc/opt/Info'
 import UpdInfo from '@/components/svc/upd/Info'
 import MonitorHost from '@/components/monitor/host/Host'
 import MonitorNetworkInterfaces from '@/components/monitor/network/Interface'
-import MonitorNetworkListening from '@/components/monitor/network/Listening'
 import SiteRoot from '@/components/site/root/Info'
 import SiteApps from '@/components/site/app/Apps'
 
@@ -45,7 +41,6 @@ import SiteApps from '@/components/site/app/Apps'
     updInfo: UpdInfo,
     monitorHost: MonitorHost,
     monitorNetworkInterfaces: MonitorNetworkInterfaces,
-    monitorNetworkListening: MonitorNetworkListening,
     siteRoot: SiteRoot,
     siteApps: SiteApps
   }

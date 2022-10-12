@@ -108,7 +108,7 @@ export default Page
     padding: 0px 8px;
     background-color: #f8f8f8;
   }
-  .header /deep/ .el-button {
+  .header :deep(.el-button) {
     padding: 0px 2px;
     margin-top: 0px;
     margin-bottom: 0px;
@@ -131,7 +131,7 @@ export default Page
 
   .drawer {
   }
-  .drawer /deep/ .el-drawer__header{
+  .drawer :deep(.el-drawer__header){
     background-color: #0078D7;
     color: white;
     height: 26px;
@@ -139,11 +139,11 @@ export default Page
     margin-bottom: 0px;
     margin-top: 0px;
   }
-  .drawer /deep/ .el-drawer__body{
+  .drawer :deep(.el-drawer__body){
     margin: 0;
     padding: 0;
   }
-  .drawer /deep/ .el-table--small td {
+  .drawer :deep(.el-table--small td) {
     padding: 0;
     margin: 0;
   }
@@ -152,7 +152,7 @@ export default Page
     display: flex;
     align-items: center;
   }
-  .drawer-header /deep/ .el-button {
+  .drawer-header :deep(.el-button) {
     padding: 0px 3px;
     font-size: medium;
     color: #f2f2f2;

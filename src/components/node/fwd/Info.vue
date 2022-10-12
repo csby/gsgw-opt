@@ -91,7 +91,7 @@
         <el-table-column
           label="监听地址"
           prop="listenAddress"
-          width="105px"
+          width="95px"
           align="right" />
         <el-table-column
           label="监听端口"
@@ -128,7 +128,7 @@
           </template>
         </el-table-column>
         <el-table-column width="105px">
-          <template slot="header">
+          <template slot="header" slot-scope="scope">
             <el-button type="text" size="small" @click="add.visible = true">
               <span>添加新端口</span>
             </el-button>
@@ -506,7 +506,7 @@ export default Info
 </script>
 
 <style scoped>
-  .el-card /deep/ .el-card__header {
+  .el-card :deep(.el-card__header) {
     background-color: #f8f8f8;
     padding: 1px 3px;
   }
@@ -527,18 +527,18 @@ export default Info
     text-align: center;
   }
 
-  .el-card /deep/ .el-table__header-wrapper tr th {
+  .el-card :deep(.el-table__header-wrapper tr th) {
     background-color: #f8f8f8;
     padding: 2px 0px 1px 0px;
   }
-  .el-card /deep/ .el-table--small td {
+  .el-card :deep(.el-table--small td) {
     padding: 1px 0px 0px 0px;
     margin: 0;
   }
-  .el-table /deep/ .el-button {
+  .el-table :deep(.el-button) {
     padding: 0;
   }
-  .el-table /deep/ .el-popconfirm {
+  .el-table :deep(.el-popconfirm) {
     padding: 0;
   }
 
@@ -564,18 +564,18 @@ export default Info
   .table {
     margin-top: 5px;
   }
-  .table /deep/ .el-table--small td {
+  .table :deep(.el-table--small td) {
     padding: 0;
     margin: 0;
   }
-  .table /deep/ .el-table--small tr th {
+  .table :deep(.el-table--small tr th) {
     padding: 0;
   }
-  .table /deep/ .el-table__empty-block {
+  .table :deep(.el-table__empty-block) {
     min-height: 0;
     width: 96%;
   }
-  .table /deep/ .el-table__empty-text {
+  .table :deep(.el-table__empty-text) {
     width: 100%;
     text-align: left;
   }

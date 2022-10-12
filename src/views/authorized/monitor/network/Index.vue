@@ -1,36 +1,39 @@
 <template>
-  <monitorPage title="网卡"
-               :uri="this.$uris.monitorNetworkInterfaces"
-               :filter="filterData"
-               :min="0">
-    <el-table-column type="expand">
-      <div slot-scope="scope">
-        <div></div>
-        <throughput :name="scope.row.name" :ips="scope.row.ipAddress" />
-      </div>
-    </el-table-column>
-    <el-table-column
-      label="网卡名称"
-      prop="name" />
-    <el-table-column
-      label="最大传输单元"
-      prop="mtu"
-      width="130px" />
-    <el-table-column
-      label="标志"
-      prop="flags"
-      width="180px"
-      :formatter="fmtFlags" />
-    <el-table-column
-      label="MAC地址"
-      prop="macAddress"
-      width="120px" />
-    <el-table-column
-      label="IP地址"
-      prop="ipAddress"
-      width="200px"
-      :formatter="fmtIpAddress" />
-  </monitorPage>
+  <div>
+    <monitorPage title="网卡"
+                 :uri="this.$uris.monitorNetworkInterfaces"
+                 :filter="filterData"
+                 :min="0">
+      <el-table-column type="expand">
+        <div slot-scope="scope">
+          <div></div>
+          <throughput :name="scope.row.name" :ips="scope.row.ipAddress" />
+        </div>
+      </el-table-column>
+      <el-table-column
+          label="网卡名称"
+          prop="name" />
+      <el-table-column
+          label="最大传输单元"
+          prop="mtu"
+          width="130px" />
+      <el-table-column
+          label="标志"
+          prop="flags"
+          width="180px"
+          :formatter="fmtFlags" />
+      <el-table-column
+          label="MAC地址"
+          prop="macAddress"
+          width="120px" />
+      <el-table-column
+          label="IP地址"
+          prop="ipAddress"
+          width="200px"
+          :formatter="fmtIpAddress" />
+    </monitorPage>
+    <listeningPorts style="margin-top: 15px" />
+  </div>
 </template>
 
 <script>
@@ -38,11 +41,13 @@ import Component from 'vue-class-component'
 import SocketBase from '@/components/SocketBase'
 import MonitorPage from '@/components/monitor/Page'
 import Throughput from '@/components/monitor/network/Throughput'
+import ListeningPorts from '@/components/monitor/network/Listening'
 
 @Component({
   components: {
     monitorPage: MonitorPage,
-    throughput: Throughput
+    throughput: Throughput,
+    listeningPorts: ListeningPorts
   }
 })
 class Index extends SocketBase {
@@ -82,7 +87,7 @@ class Index extends SocketBase {
     return val
   }
 
-  mounted() {
+  mounted () {
     this.$nextTick(this.fireRoutePathChanged)
   }
 }
