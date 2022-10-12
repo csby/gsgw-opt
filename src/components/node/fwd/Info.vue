@@ -91,7 +91,7 @@
         <el-table-column
           label="监听地址"
           prop="listenAddress"
-          width="95px"
+          width="120px"
           align="right" />
         <el-table-column
           label="监听端口"
