@@ -1,9 +1,13 @@
 <template>
-  <el-card :body-style="bodyStyle">
+  <el-card :body-style="bodyStyle" shadow="never">
     <div slot="header" class="header">
       <div>
         <i class="el-icon-info" ></i>
         <span>节点信息</span>
+        <div v-show="info.visible === false" style="padding-left: 5px">
+          <span v-if="info.online" style="color: #67C23A;">[在线]</span>
+          <span v-else style="color: #909399;">[离线]</span>
+        </div>
       </div>
       <div >
         <el-tooltip placement="left">
@@ -13,8 +17,12 @@
           <el-button style="padding: 2px 5px;" type="text" icon="el-icon-refresh" @click="doGetInfo"/>
         </el-tooltip>
       </div>
+      <div style="padding-right: 5px">
+        <el-button v-if="info.visible" type="text" icon="el-icon-arrow-down" @click="info.visible = false"/>
+        <el-button v-else type="text" icon="el-icon-arrow-right" @click="info.visible = true"/>
+      </div>
     </div>
-    <div v-loading="info.loading" element-loading-text="加载中...">
+    <div class="body" v-show="info.visible" v-loading="info.loading" element-loading-text="加载中...">
       <div class="item">
         <span>节点实例:</span>
         <span class="text">{{info.instance}}</span>
@@ -52,10 +60,11 @@ import SocketBase from '@/components/SocketBase'
 @Component
 class Info extends SocketBase {
   bodyStyle = {
-    padding: '6px 1px 9px 12px'
+    padding: '0px 0px 0px 0px'
   }
 
   info = {
+    visible: false,
     loading: false,
     instance: '',
     certificate: '',
@@ -82,13 +91,13 @@ class Info extends SocketBase {
     this.post(this.$uris.nodeInfoGet, null, this.onGetInfo)
   }
 
-  onSocketMessage(id, data) {
+  onSocketMessage (id, data) {
     if (id === this.$evt.id.wsNodeOnlineStateChanged) {
       this.info.online = data.online
     }
   }
 
-  mounted() {
+  mounted () {
     this.doGetInfo()
   }
 }
@@ -109,13 +118,20 @@ export default Info
     display: flex;
     align-items: center;
   }
-
   .header div:first-child {
     flex: 1;
   }
   .header div:first-child i {
     width: 30px;
     text-align: center;
+  }
+  .header :deep(.el-button) {
+    padding-top: 1px;
+    padding-bottom: 1px;
+  }
+
+  .body {
+    padding: 6px 1px 9px 12px;
   }
 
   .item {
