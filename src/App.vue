@@ -42,4 +42,11 @@
     stroke: #cf9236;
     stroke-width: 2;
   }
+
+  .status-running {
+    color: #67C23A;
+  }
+  .status-stopped {
+    color: #F56C6C;
+  }
 </style>

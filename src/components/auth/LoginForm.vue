@@ -1,8 +1,8 @@
 <template>
   <table class="table" v-loading="logining" element-loading-text="登录中...">
-    <tr >
-      <td></td>
-      <td align="right" style="color: lightgray;padding-bottom: 3px;">{{frontVersion}}</td>
+    <tr style="vertical-align: bottom">
+      <td style="color: #909399;padding-bottom: 5px;">{{frontName}}登录</td>
+      <td style="color: lightgray;padding-bottom: 3px; font-size: small; text-align: right">{{frontVersion}}</td>
     </tr>
     <tr>
       <td colspan="2" style="">
@@ -16,7 +16,7 @@
         </el-input>
       </td>
     </tr>
-    <tr valign="middle">
+    <tr style="vertical-align: center">
       <td colspan="2" class="password">
         <el-input placeholder="请输秘密"
                   v-model="passwordVal"

@@ -2,6 +2,7 @@
 import Component from 'vue-class-component'
 import VueBase from '@/components/VueBase'
 import Version from '@/version'
+import config from '@/config'
 import JsEncrypt from 'jsencrypt/bin/jsencrypt'
 
 @Component({
@@ -16,6 +17,7 @@ import JsEncrypt from 'jsencrypt/bin/jsencrypt'
 })
 class LoginBase extends VueBase {
   frontVersion = Version.version
+  frontName = config.app.title
   errCode = 0
   errSummary = ''
   errDetail = ''

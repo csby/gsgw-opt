@@ -85,7 +85,7 @@
 
       <el-menu-item index="/port/fwd/proxy" v-show="info.role.server.proxy">
         <i class="el-icon-share"></i>
-        <span slot="title">方向代理</span>
+        <span slot="title">反向代理</span>
       </el-menu-item>
 
       <el-submenu index="/cloud" v-show="info.role.server.cloud">
